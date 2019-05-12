@@ -5,9 +5,9 @@ const router = vertex.router()
 
 /*  This is a sample API route. */
 
-const Profile = require('../models/Profile')
+const Company = require('../models/Company')
 
-router.get('/profile', (req, res) => {
+router.get('/company', (req, res) => {
 	
 	const query = req.query
 
@@ -16,11 +16,11 @@ router.get('/profile', (req, res) => {
 		filters = {age: {$gt: query.age}}
 	}
 
-	Profile.find(filters)
-	.then(profiles => {
+	Company.find(filters)
+	.then(companies => {
 		res.json({
-			confirmation: 'success profile',
-			data: profiles
+			confirmation: 'success',
+			data: companies
 		})
 	})
 	.catch(err => {
@@ -32,17 +32,17 @@ router.get('/profile', (req, res) => {
 
 })
 
-router.put('/profile/update', (req, res) => {
+router.put('/company/update', (req, res) => {
 
 	const query = req.query // require: id, key=value
-	const profileId = query.id
+	const companyId = query.id
 	delete query['id']
 
-	Profile.findByIdAndUpdate(profileId, query, {new: true})
-	.then( profile=>
+	Company.findByIdAndUpdate(companyId, query, {new: true})
+	.then( company=>
 		res.json({
 			confirmation: "success",
-			data: profile
+			data: company
 		}))
 	.catch(err=>{
 		res.json({
@@ -52,14 +52,14 @@ router.put('/profile/update', (req, res) => {
 	})
 })
 
-router.get('./profile/remove', (req, res) => {
+router.get('./company/remove', (req, res) => {
 	const query = req.query
 
-	Profile.findByIdAndRemove(query.id)
+	Company.findByIdAndRemove(query.id)
 	.then( () => {
 		res.json({
 			confirmation: 'success',
-			data: 'Profile ' + query.id + ' successfully removed.'
+			data: 'Company ' + query.id + ' successfully removed.'
 		})
 	})
 	.catch( err => {
@@ -70,32 +70,32 @@ router.get('./profile/remove', (req, res) => {
 	})
 })
 
-router.get('/profile/:id', (req, res) => {
+router.get('/company/:id', (req, res) => {
 
 const id = req.params.id
 
-Profile.findById(id)
-.then( profile => {
+Company.findById(id)
+.then( company => {
 	res.json({
 		confirmation: 'success',
-		data: profile
+		data: company
 	})
 })
 .catch(err=> {
 	res.json({
 		confirmation: "fail",
-		message: 'Profile ' + id + ' not found.'
+		message: 'Company ' + id + ' not found.'
 	})
 })
 
 })
 
-router.post('/profile', (req, res) => {
-	Profile.create(req.body)
-	.then( profile=> {
+router.post('/company', (req, res) => {
+	Company.create(req.body)
+	.then( company => {
 		res.json({
 			confirmation: 'success',
-			data: profile
+			data: company
 		})
 	})
 	.catch( err => {

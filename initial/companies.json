@@ -1,0 +1,5 @@
+{"companyName":"BitAI", "description":"An artificial intelligence startup based in Tornto.", "stock":421, "growth":true, "trend":[80, 78, 86, 96, 83, 85, 76, 75, 88, 90]}
+{"companyName":"LiteMedical", "description":"Medical Technology startup focusing on providing access to medicine.", "stock":123, "growth":false, "trend":[45, 45, 64, 74, 25, 52, 62, 63, 42, 23]}
+{"companyName":"EtherTravel", "description":"Travelling startup connecting remote workers.", "stock":213, "growth":true, "trend":[63, 64, 75, 35, 23, 53, 75, 86, 23, 53]}
+{"companyName":"StellarPharma", "description":"Pharmaceutical tech startup getting your meds delivered.", "stock":235, "growth":false, "trend":[14, 42, 35, 64, 47, 46, 53, 24, 23, 43]}
+{"companyName":"LiteVision", "description":"Augmented reality startup.", "stock":613, "growth":true, "trend":[34, 12, 32, 53, 46, 57, 34, 64, 34, 23]}

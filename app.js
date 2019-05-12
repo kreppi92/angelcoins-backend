@@ -6,6 +6,7 @@ const config = {
 	static: 'public', 		// Set static assets directory
 	db: { 					// Database configuration. Remember to set env variables in .env file: MONGODB_URI, PROD_MONGODB_URI
 		url: (process.env.TURBO_ENV == 'dev') ? process.env.MONGODB_URI : process.env.PROD_MONGODB_URI,
+		// url: process.env.MONGODB_URI,
 		type: 'mongo',
 		onError: (err) => {
 			console.log('DB Connection Failed!')
@@ -18,6 +19,11 @@ const config = {
 
 const app = vertex.app(config) // initialize app with config options
 
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+  });
 
 // import routes
 const index = require('./routes/index')
@@ -26,6 +32,7 @@ const api = require('./routes/api')
 // set routes
 app.use('/', index)
 app.use('/api', api) // sample API Routes
+
 
 
 module.exports = app
