@@ -1,5 +1,6 @@
 // Full Documentation - https://www.turbo360.co/docs
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
+// const cors = require('cors');
 
 const config = {
 	views: 'views', 		// Set views directory 
@@ -19,11 +20,11 @@ const config = {
 
 const app = vertex.app(config) // initialize app with config options
 
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-  });
+// app.use(function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", "*");
+// 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// 	next();
+//   });
 
 // import routes
 const index = require('./routes/index')

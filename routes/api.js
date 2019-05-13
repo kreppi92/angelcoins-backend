@@ -8,15 +8,8 @@ const router = vertex.router()
 const Company = require('../models/Company')
 
 router.get('/company', (req, res) => {
-	
-	const query = req.query
 
-	let filters = req.query
-	if (req.query.age != null) {
-		filters = {age: {$gt: query.age}}
-	}
-
-	Company.find(filters)
+	Company.find()
 	.then(companies => {
 		res.json({
 			confirmation: 'success',
